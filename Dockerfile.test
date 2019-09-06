@@ -5,19 +5,24 @@ ENV VERSION 1.0
 
 RUN apt-get update
 
-# CUrl
+# CUrl (layer 5-6)
 RUN apt install -y -f
 RUN apt-get install -y -f curl
+#RUN apt install -t jessie-backports  openjdk-8-jre-headless ca-certificates-java
+#RUN apt-get install -y -f java-runtime-headless openjdk-7-jre-headless
 
-# Dependencies
+
+# Dependencies (layer 7-11)
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - 
 RUN echo "deb http://dl.bintray.com/sbt/debian /" | tee -a /etc/apt/sources.list.d/sbt.list
 RUN curl -sL https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
 RUN echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list
 RUN echo "deb http://packages.linuxmint.com debian import" >> /etc/apt/sources.list
+RUN echo "deb http://http.debian.net/debian jessie-backports main" > /etc/apt/sources.list.d/jessie-backports.list
 
-# Mongo, NodeJS, Git, SBT, xvfb, FireFox, Chrome
+# Mongo, NodeJS, Git, SBT, xvfb, FireFox, Chrome (layer 12-13)
 RUN apt-get update && \
+    apt-get install -t jessie-backports openjdk-8-jre-headless && \
     apt-get -y --fix-missing install wget bzip2 make g++ && \
     apt-get -y --force-yes --fix-missing install --no-install-recommends mongodb git sbt=1.2.8 xvfb nodejs firefox google-chrome-stable && \
     apt-get clean && \
@@ -25,15 +30,15 @@ RUN apt-get update && \
 
 RUN update-ca-certificates -f -v
 
-# Scala
+# Scala (layer 14)
 RUN curl -O -q http://downloads.typesafe.com/scala/2.11.5/scala-2.11.5.deb && \
     dpkg -i scala-2.11.5.deb && \
     rm scala-2.11.5.deb
 
-# Gulp, bower
+# Gulp, bower (layer 15)
 RUN npm install -g gulp bower
 
-# Dirs
+# Dirs (layer 16 -25)
 RUN mkdir /source
 RUN mkdir -p /data/db
 
@@ -46,11 +51,11 @@ ADD client/wct.conf.js /source/client/wct.conf.js
 ADD client/test.html /source/client/test.html
 ADD run_tests.sh /source/run_tests.sh
 
-# Dependencies
+# Dependencies (layer 26 -27)
 RUN cd /source && sbt update
 RUN cd /source/client && npm install && bower install --allow-root --config.interactive=false -s
 
-# Envs
+# Envs (layer 28-35)
 ENV TEST_TYPE "spec"
 ENV DOMAIN "http://172.17.42.1"
 ENV DISPLAY ":1.0"
