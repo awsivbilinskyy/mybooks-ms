@@ -9,9 +9,11 @@ RUN apt-get update
 # CUrl (layer 5-6)
 RUN apt install -y -f
 RUN apt-get install -y -f curl
-RUN apt-get install -y -t ca-certificates-java default-jre-headless openjdk-8-jre-headless
+#RUN apt-get install -y -t ca-certificates-java default-jre-headless openjdk-8-jre-headless
 #RUN apt-get install -y -f java-runtime-headless openjdk-7-jre-headless
-
+RUN echo 'deb http://ftp.au.debian.org/debian/ stretch main contrib non-free' > /etc/apt/sources.list.d/stretch.list && \
+    apt-get update && \
+    apt-get install -y --no-install-recommends openjdk-8-jre-headless
 
 # Dependencies (layer 7-11)
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - 
