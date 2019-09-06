@@ -19,7 +19,7 @@ RUN echo "deb http://dl.bintray.com/sbt/debian /" | tee -a /etc/apt/sources.list
 RUN curl -sL https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
 RUN echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list
 RUN echo "deb http://packages.linuxmint.com debian import" >> /etc/apt/sources.list
-RUN echo "deb http://http.debian.net/debian jessie-backports main" > /etc/apt/sources.list.d/jessie-backports.list
+##RUN echo "deb http://http.debian.net/debian jessie-backports main" > /etc/apt/sources.list.d/jessie-backports.list
 
 # Mongo, NodeJS, Git, SBT, xvfb, FireFox, Chrome (layer 12-13)
 RUN apt-get update && \
