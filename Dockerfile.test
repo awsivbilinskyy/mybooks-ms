@@ -9,7 +9,7 @@ RUN apt-get update
 # CUrl (layer 5-6)
 RUN apt install -y -f
 RUN apt-get install -y -f curl
-RUN apt install -t openjdk-8-jre-headless ca-certificates-java
+RUN apt-get install -y -t ca-certificates-java default-jre-headless openjdk-8-jre-headless
 #RUN apt-get install -y -f java-runtime-headless openjdk-7-jre-headless
 
 
@@ -19,11 +19,10 @@ RUN echo "deb http://dl.bintray.com/sbt/debian /" | tee -a /etc/apt/sources.list
 RUN curl -sL https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
 RUN echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list
 RUN echo "deb http://packages.linuxmint.com debian import" >> /etc/apt/sources.list
-RUN echo "deb http://http.debian.net/debian jessie-backports main" > /etc/apt/sources.list.d/jessie-backports.list
+##RUN echo "deb http://http.debian.net/debian jessie-backports main" > /etc/apt/sources.list.d/jessie-backports.list
 
 # Mongo, NodeJS, Git, SBT, xvfb, FireFox, Chrome (layer 12-13)
 RUN apt-get update && \
-    apt-get install -t jessie-backports openjdk-8-jre-headless && \
     apt-get -y --fix-missing install wget bzip2 make g++ && \
     apt-get -y --force-yes --fix-missing install --no-install-recommends mongodb git sbt=1.2.8 xvfb nodejs firefox google-chrome-stable && \
     apt-get clean && \
