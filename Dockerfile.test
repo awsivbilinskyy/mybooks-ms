@@ -22,16 +22,16 @@ RUN echo "deb http://packages.linuxmint.com debian import" >> /etc/apt/sources.l
 # Mongo, NodeJS, Git, SBT, xvfb, FireFox, Chrome (layer 13-14)
 RUN apt-get update && \
     apt-get -y --fix-missing install wget bzip2 make g++ && \
-    apt-get -y --force-yes --fix-missing install --no-install-recommends mongodb git sbt=1.2.8 xvfb nodejs firefox google-chrome-stable && \
+    apt-get -y --force-yes --fix-missing install --no-install-recommends mongodb git sbt=1.0.0 xvfb nodejs firefox google-chrome-stable && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 RUN update-ca-certificates -f -v
 
 # Scala (layer 15)
-RUN curl -O -q http://downloads.typesafe.com/scala/2.11.0/scala-2.11.0.deb && \
-    dpkg -i scala-2.11.0.deb && \
-    rm scala-2.11.0.deb
+RUN curl -O -q http://downloads.typesafe.com/scala/2.11.2/scala-2.11.2.deb && \
+    dpkg -i scala-2.11.2.deb && \
+    rm scala-2.11.2.deb
 
 # Gulp, bower (layer 16)
 RUN npm install -g gulp bower
