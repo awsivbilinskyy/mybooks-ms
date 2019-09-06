@@ -1,7 +1,7 @@
 name := "books-ms"
 
 version := "1.0"
-scalaVersion := "2.11."
+scalaVersion := "2.11.2"
 
 resolvers += "spray" at "http://repo.spray.io/"
 
