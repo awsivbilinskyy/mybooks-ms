@@ -13,8 +13,6 @@ libraryDependencies ++= {
     "io.spray"                  %   "spray-can"       % sprayV,
     "io.spray"                  %   "spray-routing"   % sprayV,
     "io.spray"                  %%  "spray-json"      % "1.3.1",
-    "com.typesafe.akka"         %%  "akka-actor"      % akkaV,
-    "org.mongodb"               %%  "casbah"          % "3.1.1",
     "com.novus"                 %%  "salat"           % "1.9.8",
     "org.slf4j"                 %   "slf4j-api"       % "1.7.7",
     "ch.qos.logback"            %   "logback-classic" % "1.0.3",
