@@ -1,4 +1,5 @@
-FROM debian:jessie
+FROM debian:stretch
+#FROM debian:jessie
 MAINTAINER Viktor Farcic "viktor@farcic.com"
 
 ENV VERSION 1.0
@@ -8,7 +9,7 @@ RUN apt-get update
 # CUrl (layer 5-6)
 RUN apt install -y -f
 RUN apt-get install -y -f curl
-#RUN apt install -t jessie-backports  openjdk-8-jre-headless ca-certificates-java
+RUN apt install -t openjdk-8-jre-headless ca-certificates-java
 #RUN apt-get install -y -f java-runtime-headless openjdk-7-jre-headless
 
 
