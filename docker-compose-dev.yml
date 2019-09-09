@@ -6,8 +6,7 @@ app:
     - db:db
 
 db:
-  image: mongo:3.0
-  command: --nojournal
+  image: mongo
 
 tests:
   image: 10.100.198.200:5000/books-ms-tests

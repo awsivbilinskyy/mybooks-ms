@@ -9,9 +9,3 @@
 /.ivy2
 /*.box
 /*.iml
-demo_*
-*/demo_*
-*/*/demo_*
-*/*/*/demo_*
-*/*/*/*/demo_*
-*/*/*/*/*/demo_*

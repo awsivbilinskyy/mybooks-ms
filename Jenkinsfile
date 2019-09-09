@@ -11,7 +11,7 @@ node("cd") {
 
     def flow = load "/data/scripts/workflow-util.groovy"
 
-    git url: "https://github.com/awsivbilinskyy/my${serviceName}.git"
+    git url: "https://github.com/vfarcic/${serviceName}.git"
     flow.provision(swarmPlaybook)
     flow.provision(proxyPlaybook)
     flow.buildTests(serviceName, registryIpPort)
