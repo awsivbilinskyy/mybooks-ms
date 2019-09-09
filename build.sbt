@@ -22,8 +22,8 @@ libraryDependencies ++= {
 }
 
 dependencyOverrides ++= Seq(
-    "com.typesafe.akka"         %%  "akka-actor"      % "2.4.4",
-    "org.mongodb"               %%  "casbah"          % "3.1.1"
+    "com.typesafe.akka"         %%  "akka-actor"      % "2.3.0",
+    "org.mongodb"               %%  "casbah"          % "2.7.2"
 )
 
 test in assembly := {}
