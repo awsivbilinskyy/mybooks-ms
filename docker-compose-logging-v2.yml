@@ -15,7 +15,8 @@ services:
       tag: books-ms
 
   db:
-    image: mongo
+    image: mongo:3.0
+    command: --smallfiles
     log_driver: syslog
     log_opt:
       tag: books-ms

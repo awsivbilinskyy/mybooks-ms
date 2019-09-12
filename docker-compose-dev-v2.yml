@@ -10,7 +10,8 @@ services:
       - db:db
 
   db:
-    image: mongo
+    image: mongo:3.0
+    command: --smallfiles
 
   tests:
     image: 10.100.198.200:5000/books-ms-tests
