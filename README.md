@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+# mybooks-ms
+mybooks-ms
+my tries to fix some deprectated content for devops2.0
+=======
 Docker
 ============
 
@@ -35,3 +40,4 @@ Run Integration Tests
 sudo docker-compose -f docker-compose-dev.yml up integ
 ```
 
+>>>>>>> f282e946fb99cfd1821f2f04b91d96d65559f274
