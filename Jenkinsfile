@@ -9,6 +9,7 @@ node("cd") {
 
     checkout scm
     flow.provision("prod2.yml")
+    flow.dockerCleanup(proxyNode)
     flow.buildTests(serviceName, registryIpPort)
     flow.runTests(serviceName, "tests", "")
     flow.buildService(serviceName, registryIpPort)
