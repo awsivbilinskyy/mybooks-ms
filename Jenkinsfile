@@ -5,13 +5,13 @@ node("cd") {
     def swarmNode = "swarm-master"
     def proxyNode = "swarm-master"
     def registryIpPort = "10.100.198.200:5000"
-    def swarmPlaybook = "swarm-healing.yml"
+    def swarmPlaybook = "swarm.yml"
     def proxyPlaybook = "swarm-proxy.yml"
     def instances = 1
 
     def flow = load "/data/scripts/workflow-util.groovy"
 
-    git url: "https://github.com/awsivbilinskyy/my${serviceName}.git"
+    git url: "https://github.com/vfarcic/${serviceName}.git"
     flow.provision(swarmPlaybook)
     flow.provision(proxyPlaybook)
     flow.buildTests(serviceName, registryIpPort)
@@ -24,6 +24,6 @@ node("cd") {
     flow.deploySwarm(serviceName, prodIp, nextColor, instances)
     flow.runBGPreIntegrationTests(serviceName, prodIp, nextColor)
     flow.updateBGProxy(serviceName, proxyNode, nextColor, prodIp)
+    flow.updateChecks(serviceName, swarmNode, prodIp)
     flow.runBGPostIntegrationTests(serviceName, prodIp, proxyIp, proxyNode, currentColor, nextColor)
-    flow.updateChecks(serviceName, swarmNode)
 }
