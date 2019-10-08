@@ -8,10 +8,11 @@ node("cd") {
     def swarmPlaybook = "swarm-healing.yml"
     def proxyPlaybook = "swarm-proxy.yml"
     def instances = 1
-
+    def provisionNode = "cd"
     def flow = load "/data/scripts/workflow-util.groovy"
 
     git url: "https://github.com/awsivbilinskyy/my${serviceName}.git"
+    flow.dockerCleanup(provisionNode)
     flow.provision(swarmPlaybook)
     flow.provision(proxyPlaybook)
     flow.buildTests(serviceName, registryIpPort)
