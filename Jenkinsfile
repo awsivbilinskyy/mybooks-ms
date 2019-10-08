@@ -25,5 +25,5 @@ node("cd") {
     flow.runBGPreIntegrationTests(serviceName, prodIp, nextColor)
     flow.updateBGProxy(serviceName, proxyNode, nextColor, prodIp)
     flow.runBGPostIntegrationTests(serviceName, prodIp, proxyIp, proxyNode, currentColor, nextColor)
-    flow.updateChecks(serviceName, swarmNode)
+    flow.updateChecks(serviceName, swarmNode, prodIp)
 }
