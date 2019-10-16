@@ -1,1 +1,12 @@
+docker_extra: ""
+
+centos_files: [
+  { src: "docker.centos.repo", dest: "/etc/yum.repos.d/docker.repo" },
+  { src: "docker.centos.service", dest: "/lib/systemd/system/docker.service" },
+]
+
+debian_version: xenial
+docker_cfg: docker.service
+docker_cfg_dest: /etc/systemd/system/docker.service
+docker_compose_version: 1.24.0
 fig_version: "1.0.1"
