@@ -53,8 +53,6 @@ Build Tests
 -----------
 ```
 sudo docker build -t vfarcic/books-ms-tests -f Dockerfile.test .
-    
-sudo docker push vfarcic/books-ms-tests
 ```
 
 Test and Build
@@ -63,24 +61,24 @@ Test and Build
 sudo docker-compose -f docker-compose-dev.yml run testsLocal
 
 sudo docker build -t vfarcic/books-ms .
-
-sudo docker push vfarcic/books-ms
 ```
 
 Run Front-End Tests Watcher
----------------------------
+--------------------------------------
 ```
-sudo docker-compose -f docker-compose-dev.yml up feTests
+sudo docker-compose -f docker-compose-dev.yml up feTestsLocal
 ```
+after successful tests type **Ctrl+C** to terminate container
 
-Run Integration Tests
----------------------
+Run Integration Tests (mind the note!)
+-------------------------------------
+**note**: requires resources from the latest chapters of the book, provisioned by [myms-lifecycle](https://github.com/awsivbilinskyy/myms-lifecycle) repository - cd node with container registry
 ```
 sudo docker-compose -f docker-compose-dev.yml up integ
 ```
 
 Cleanup the enviroment
----------------------
+-------------------------------------
 exit VM and launch **cleanup.sh** script to delete VM and builded artifacts
 ```
 exit 
