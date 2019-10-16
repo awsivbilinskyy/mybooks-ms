@@ -1,7 +1,8 @@
 
-# mybooks-ms my tries to fix some deprectated content from "Devops2.0 toolkit" book repository
+# my tries to fix some deprectated content from "Devops2.0 toolkit" book repository
 
-This is the repository with application code itself, pre-deployment and post-deployment automated tests. 
+This is the repository with application code itself, pre-deployment and post-deployment automated tests.
+ 
 The IaC part of book practice tasks is located here [myms-lifecycle](https://github.com/awsivbilinskyy/myms-lifecycle)
 
 Prerequisits for host VM
@@ -34,7 +35,7 @@ cd ./mybooks-ms
 
 vagrant up dev
 ```
-connect to created VM via ssh and 
+connect to created VM via ssh
 ```
 vagrant ssh dev
 ```
