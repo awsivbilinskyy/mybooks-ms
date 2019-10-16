@@ -12,6 +12,8 @@ Vagrant.configure(2) do |config|
     v.memory = 2048
   end
   config.vm.define :dev do |dev|
+    dev.disksize.size = "20GB"
+    dev.vm.hostname = "dev"
     dev.vm.network "private_network", ip: "10.100.199.200"
     dev.vm.provision :shell, path: "bootstrap.sh"
     dev.vm.provision :shell,
