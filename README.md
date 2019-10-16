@@ -72,7 +72,7 @@ after successful tests type **Ctrl+C** to terminate container
 
 Run Integration Tests (mind the note!)
 -------------------------------------
-**note**: requires resources from the latest chapters of the book, provisioned by [myms-lifecycle](https://github.com/awsivbilinskyy/myms-lifecycle) repository - cd node with container registry
+**note**: requires resources from the later chapters of the book, provisioned by [myms-lifecycle](https://github.com/awsivbilinskyy/myms-lifecycle) repository - **cd** node with container-registry up and running
 ```
 sudo docker-compose -f docker-compose-dev.yml up integ
 ```
